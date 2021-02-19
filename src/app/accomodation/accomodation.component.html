@@ -1,0 +1,141 @@
+
+<div class="acoomodation">
+
+  <div class="form" *ngIf="!reservationDone">
+    <section id="first">
+      <h1>Hotel Reservation</h1>
+      <mat-grid-list #grid cols="3" rowHeight="3:1" >
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput placeholder="First name" [formControl]="firstName" required>
+              <mat-error *ngIf="firstName.invalid">{{getFNameErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field>
+              <input matInput placeholder="Last name" [formControl]="lastName" required>
+              <mat-error *ngIf="lastName.invalid">{{getLNameErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field>
+              <input matInput placeholder="email" [formControl]="email" required>
+              <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </section>
+
+    
+    <section id ="second">
+      <mat-grid-list #grid cols="3"  rowHeight="3:1">
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput placeholder="Phone" [formControl]="phoneNumber" required>
+              <mat-error *ngIf="phoneNumber.invalid">{{getPhoneNumberNameErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        
+        <mat-grid-tile>
+          <mat-form-field>
+            <mat-select  placeholder="Room type" [formControl]="roomType" required>
+              <mat-option value="option1">A</mat-option>
+              <mat-option value="option2">B</mat-option>
+              <mat-option value="option3">C</mat-option>
+            </mat-select>
+            <mat-error *ngIf="roomType.invalid">{{getRoomTypeErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </section>
+
+    <section id ="third">
+      <mat-grid-list #grid cols="3"  rowHeight="3:1">
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput  [matDatepicker]="picker" [formControl]="serializedArrivalPickerDate" placeholder="Choose arrival date" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <!-- <mat-error *ngIf="phoneNumber.invalid">{{getPhoneNumberNameErrorMessage()}}</mat-error> -->
+          </mat-form-field>
+        </mat-grid-tile>
+        
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput  [matDatepicker]="picker2" [formControl]="serializedDeparturePickerDate" placeholder="Choose departure date" required>
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+            <!-- <mat-error *ngIf="roomType.invalid">{{getRoomTypeErrorMessage()}}</mat-error> -->
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </section>
+
+    <section id ="fourth">
+      <mat-grid-list #grid cols="3"  rowHeight="3:1">
+        <mat-grid-tile>
+          <mat-form-field>
+            <mat-select  placeholder="Number of Adults" [formControl]="adultsNumber">
+              <mat-option *ngFor="let item of [].constructor(5); let in=index" value="{{in}}">{{in}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="adultsNumber.invalid">{{getAdultsNumberErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        
+        <mat-grid-tile>
+          <mat-form-field>
+            <mat-select  placeholder="Number of children" [formControl]="childrenNumber">
+              <mat-option *ngFor="let item of [].constructor(10); let in=index" value="{{in}}">{{in}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="childrenNumber.invalid">{{getChildrenNumberErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </section>
+
+    <section id ="fifth">
+      <mat-grid-list #grid cols="1"  rowHeight="3:1">
+        <mat-form-field >
+          <textarea matInput placeholder="Questions/Comments"></textarea>
+        </mat-form-field>
+      </mat-grid-list>
+    </section>
+    <button (click)="createReservation()">submit</button>
+    </div>
+
+    <div class="form" *ngIf="reservationDone" >
+      <h1>Reservation done</h1>
+      <table mat-table [dataSource]="executedReservation"class="mat-elevation-z8">
+       <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef>Reservation nr</th>
+        <td mat-cell *matCellDef="let element">{{element.id}}</td>
+       </ng-container> 
+       <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef>Firstname</th>
+        <td mat-cell *matCellDef="let element">{{element.firstName}}</td>
+       </ng-container>
+       <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef>Lastname</th>
+        <td mat-cell *matCellDef="let element">{{element.lastName}}</td>
+       </ng-container>
+       <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>email</th>
+        <td mat-cell *matCellDef="let element">{{element.email}}</td>
+       </ng-container>
+       <ng-container matColumnDef="validFrom">
+        <th mat-header-cell *matHeaderCellDef>From</th>
+        <td mat-cell *matCellDef="let element">{{element.validFrom}}</td>
+       </ng-container>
+       <ng-container matColumnDef="validTo">
+        <th mat-header-cell *matHeaderCellDef>To</th>
+        <td mat-cell *matCellDef="let element">{{element.validTo}}</td>
+       </ng-container>
+
+       <tr mat-header-row *matHeaderRowDef="responseColumns"></tr>
+       <tr mat-row *matRowDef="let row; columns: responseColumns;"></tr>
+      </table>
+    </div>
+
+</div>

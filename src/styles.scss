@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+}
+
+.container-page {
+  margin: 300px auto;
+  padding-top: 300px;
+  width: 1200px;
+}
+
+/*
+Responsive
+=========================== */
+@media (max-width: 1200px) {
+  .container-page {
+    margin-top: 800px;
+    width: 100%;
+    padding: 0 30px;
+
+    .mat-grid-tile .mat-figure {
+      padding-right: 30px;
+    }
+
+    .mat-card {
+      margin-right: 20px;
+    }
+  }
+}
+
+/* @media (max-width:920px){
+    .container-page{
+        .box-page{
+            > .row{
+                margin: 0 -15px;
+
+                > .col{
+                    padding: 0 15px; 
+                }
+            }
+        }
+    }
+}*/

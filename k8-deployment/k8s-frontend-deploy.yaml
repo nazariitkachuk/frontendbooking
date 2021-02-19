@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-dep
+  namespace: booking
+spec:
+  selector:
+    matchLabels:
+      app: hotels-front
+  replicas: 1
+  #minReadySeconds: 50 #For deployment
+  template:
+    metadata:
+        labels:
+          app: hotels-front
+    spec:
+      containers:
+        - name: front-container
+          image: 'gcr.io/nazarii-tkachuk-book/github.com/adrianwilczynski4/frontendbooking:latest'
+         # image: front:v2
+          ports:
+            - containerPort: 80
+
+#          resources:
+#            limits:
+#              memory: "128Mi" #128MB
+#              cpu: "200m" #200 milicpu(.2cpu or 20% of the cpu)
+
+          livenessProbe:
+            initialDelaySeconds: 120
+            periodSeconds: 10
+            failureThreshold: 2
+            httpGet:
+                path: 
+                port: 80
+         # image: 'gcr.io/nazariibooking/github.com/adrianwilczynski4/backendbooking:latest'
+
+          readinessProbe:
+            initialDelaySeconds: 180
+            periodSeconds: 5
+            failureThreshold: 2
+            httpGet:
+              path: 
+              port: 80

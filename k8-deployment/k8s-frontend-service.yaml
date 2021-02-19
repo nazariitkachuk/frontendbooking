@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: booking
+  labels:
+    app: hotel-front-ser
+    app.kubernetes.io/managed-by: "gcp-cloud-build-deploy"
+
+spec:
+  type: LoadBalancer
+  loadBalancerIP: "34.107.70.147"
+  selector:
+      app: hotels-front
+  ports:
+    - name: http2
+      port: 5000
+      targetPort: 80

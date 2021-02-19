@@ -1,0 +1,26 @@
+<div class="status-page">
+  <div class="status-general">
+  <h1>
+    Reservation info
+  </h1>
+  <mat-list>
+    <div class="linesection" *ngFor="let feature of features">
+    <mat-list-item >
+      <div class="row">
+        <div class="column">
+          {{feature.name}}
+        </div>
+        <div class="column">
+          {{feature.value}}
+        </div>
+      </div>
+    </mat-list-item>
+      <mat-divider></mat-divider>
+    </div> 
+    <mat-list-item>
+      <button mat-raised-button color="primary" (click)="checkAgain()">Check another</button>
+    </mat-list-item>
+  </mat-list>
+  
+  </div>
+</div>

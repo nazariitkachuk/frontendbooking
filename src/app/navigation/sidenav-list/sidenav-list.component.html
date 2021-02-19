@@ -1,0 +1,29 @@
+<mat-nav-list class="sidenav-list">
+  <a mat-list-item routerLink="/login" (click)="onToggleClose()">
+    <mat-icon>input</mat-icon>
+    <span>Login</span>
+  </a>
+  <a mat-list-item routerLink="/signup" (click)="onToggleClose()">
+    <mat-icon>account_circle</mat-icon>
+    <span>Signup</span>
+  </a>
+  <a mat-list-item routerLink="/accomodation" (click)="onToggleClose()">
+    <mat-icon>hotel</mat-icon>
+    <span>Accomodation</span>
+  </a>
+  <a mat-list-item routerLink="/offers" (click)="onToggleClose()">
+    <mat-icon>loyalty</mat-icon>
+    <span>Offers</span>
+  </a>
+
+  <a mat-list-item routerLink="/hoteladmin" *ngIf="isActive('HOTEL_ADMIN')" (click)="onToggleClose()">
+    <mat-icon>dashboard</mat-icon>
+    <span>Hotel Panel</span>
+  </a>
+
+
+  <a mat-list-item routerLink="/administration" *ngIf="isActive('WEBSITE_ADMIN')" (click)="isAdministrationActive()" >
+    <mat-icon>desktop_mac</mat-icon>
+    <span>Administration panel</span>
+  </a>
+</mat-nav-list>

@@ -1,0 +1,74 @@
+<div class="hotel-reservations">
+
+  <mat-tab-group (selectedTabChange)="tabClick($event)">
+
+  <mat-tab *ngFor="let page of resevationTypes" [label]='page.label' >
+    
+  <h1>
+    {{page.label}}
+  </h1>
+<mat-form-field>
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="applyFilter($event,page.filter)" placeholder="Filter phrase">
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+
+  <table mat-table [dataSource]="currentReservations" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Reservation no</th>
+      <td mat-cell *matCellDef="let reservation">{{reservation.id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Firstname</th>
+      <td mat-cell *matCellDef="let reservation">{{reservation.firstName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Lastname</th>
+      <td mat-cell *matCellDef="let reservation">{{reservation.lastName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="phoneNumber">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone Number</th>
+      <td mat-cell *matCellDef="let reservation">{{reservation.phoneNumber}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>email</th>
+      <td mat-cell *matCellDef="let reservation">{{reservation.email}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="validFrom">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Arrival date</th>
+      <td mat-cell *matCellDef="let reservation">{{reservation.validFrom}}</td>
+    </ng-container>  
+    
+    <ng-container matColumnDef="validTo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Departure date</th>
+      <td mat-cell *matCellDef="let reservation">{{reservation.validTo}}</td>
+    </ng-container>  
+
+    <ng-container matColumnDef="adultsNumber">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Adults Number</th>
+      <td mat-cell *matCellDef="let reservation">{{reservation.adultsNumber}}</td>
+    </ng-container>  
+
+    <ng-container matColumnDef="Actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let reservation">
+        
+        <button *ngFor="let button of page.buttons" mat-raised-button [color]="button.color" (click)="buttonClick(reservation.id,button.name)">{{button.name}}</button>
+      </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="showColumns"></tr>
+    <tr mat-row *matRowDef="let reservation; columns: showColumns"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[10,25,50,100]"></mat-paginator>
+</div>
+
+</mat-tab>
+</mat-tab-group>
+</div>

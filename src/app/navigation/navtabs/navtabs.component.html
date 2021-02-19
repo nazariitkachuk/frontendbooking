@@ -1,0 +1,26 @@
+<div class="navtabs-container">
+  <nav mat-tab-nav-bar fxFlex fxLayout="row" fxLayoutAlign="center center">
+    <a mat-tab-link routerLink="/" routerLinkActive #home="routerLinkActive" [active]="home.isActive">
+      Home
+    </a>
+    <a mat-tab-link routerLink="/accomodation" routerLinkActive #accomodation="routerLinkActive" [active]="accomodation.isActive">
+      Accomodation
+    </a>
+    <a mat-tab-link routerLink="/food-beverage" routerLinkActive #food_beverage="routerLinkActive" [active]="food_beverage.isActive">
+      Food and Beverage
+    </a>
+    <a mat-tab-link routerLink="/lifestyle" routerLinkActive #lifestyle="routerLinkActive" [active]="lifestyle.isActive">
+      Lifestyle
+    </a>
+    <a mat-tab-link routerLink="/celebrations" routerLinkActive #celebrations="routerLinkActive" [active]="celebrations.isActive">
+      Celebrations
+    </a>
+    <a mat-tab-link routerLink="/offers" routerLinkActive #offers="routerLinkActive" [active]="offers.isActive">
+      Offers
+    </a>
+    <a mat-tab-link routerLink="/checkstatus" routerLinkActive #checkstatus="routerLinkActive" [active] = "checkstatus.isActive">
+      Reservation status
+    </a>
+    <a mat-tab-link *ngIf="isLoggedIn" (click)="logout()" routerLink="/" routerLinkActive #home="routerLinkActive" [active]="home.isActive">Logout</a>
+  </nav>
+</div>

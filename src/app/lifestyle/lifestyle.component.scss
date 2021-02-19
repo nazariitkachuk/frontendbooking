@@ -1,0 +1,35 @@
+mat-card-title {
+    font-size: 18px !important;
+    padding-top: 10px;
+  }
+  .example-card {
+   
+    max-width: 500px;
+  }
+  mat-icon {
+    font-size: 35px !important;
+    color: #18a7b5;
+    margin-bottom: 18px !important;
+  }
+
+  mat-card-content{
+      max-width: 800px;
+  }
+
+  .responsive {
+    width: auto;
+    height: 100px;
+  }
+
+  
+  .header-container {
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .main-container{
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }

@@ -1,0 +1,33 @@
+
+<div class="status-form" *ngIf="!checked">
+<div class = "form">
+
+<mat-grid-list cols=1 rowHeight="3:1">
+  <mat-grid-tile>
+   
+  <mat-form-field appearance="standard">
+    <mat-label>Enter your Reservation no</mat-label>
+    <input matInput placeholder="10212" [formControl]="reservationNo" required>
+    <mat-hint>Reservation No</mat-hint>
+    <mat-error *ngIf="reservationNo.invalid">{{getReservationErrorMessage}}</mat-error>
+
+  </mat-form-field>>
+</mat-grid-tile>
+
+<mat-grid-tile>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Enter your Email</mat-label>
+    <input matInput placeholder="my_name@domain.com" [formControl]="email" required>
+    <mat-hint>Email</mat-hint>
+    <mat-error *ngIf="email.invalid">{{getEmailErrorMessage}}</mat-error>
+  </mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile>
+  <button (click)= "checkStatus()" [disabled]="reservationNo.invalid||email.invalid">Check</button>
+</mat-grid-tile>
+</mat-grid-list>
+</div>
+</div>
+<status-response [response]="reservationData" *ngIf="checked" (repeat)="checked=false"></status-response>

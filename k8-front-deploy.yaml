@@ -1,0 +1,9 @@
+steps:
+    - name: "gcr.io/cloud-builders/gke-deploy:stable"
+      id: "create-deployment"
+      args :
+       - 'run'
+       - '--filename=k8-deployment/'
+       - '--cluster=projects/nazarii-tkachuk-book/zones/europe-west3-b/clusters/my-common-gke'
+       - '--location=europe-west3-b'
+       - '--image=gcr.io/nazarii-tkachuk-book/github.com/adrianwilczynski4/frontendbooking:latest'

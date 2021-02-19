@@ -1,0 +1,22 @@
+@import '~@angular/material/theming';
+
+@mixin navtabs-component-theme($nghotel) {
+  $primary: map-get($nghotel, primary);
+  $accent: map-get($nghotel, accent);
+
+  .navtabs-container {
+    background-color: mat-color($nghotel-accent, 800);
+  }
+  .mat-list-option:hover,
+  .mat-list-option.mat-list-item-focus,
+  .mat-nav-list .mat-list-item:hover,
+  .mat-nav-list .mat-list-item.mat-list-item-focus {
+    background-color: #007885 !important;
+    opacity: 0.5 !important;
+    color: #fff;
+  }
+  .mat-tab-label,
+  .mat-tab-link {
+    color: mat-color($nghotel-accent, 900);
+  }
+}

@@ -1,0 +1,14 @@
+<h1>
+ Hotel management panel
+</h1>
+<div class="hotel-admin">
+
+  <mat-grid-list cols="2" rowHeight="3:1">
+   
+    <mat-grid-tile *ngFor="let item of options; let nr=index" [ngClass]="item.color" [routerLink]="item.link" >
+      {{item.name}}
+      <mat-icon>{{item.icon}}</mat-icon>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+</div>

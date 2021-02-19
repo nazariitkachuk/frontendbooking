@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <div>
+    <button mat-icon-button (click)="openSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div class="logo-container">
+
+    <!-- Adding flex-layout classes column/row * center vertical and center horizontal -->
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <img class="logo" src="assets/images/logo.png" alt="logo">
+    </div>
+  </div>
+  <p>{{username}}</p>
+  <p>{{language}}</p>
+</mat-toolbar>

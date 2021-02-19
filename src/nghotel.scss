@@ -1,0 +1,102 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// adding custom colors
+$nghotel-primary: (
+  50: #e3f4f6,
+  100: #bae5e9,
+  200: #8cd3da,
+  300: #5dc1cb,
+  400: #3bb4c0,
+  500: #18a7b5,
+  600: #159fae,
+  700: #1196a5,
+  800: #0e8c9d,
+  900: #087c8d,
+  A100: #bbf5ff,
+  A200: #88edff,
+  A400: #55e5ff,
+  A700: #3be2ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+$nghotel-accent: (
+  50: #e3eaf2,
+  100: #b8cade,
+  200: #89a7c8,
+  300: #5983b1,
+  400: #3669a1,
+  500: #124e90,
+  600: #104788,
+  700: #0d3d7d,
+  800: #0a3573,
+  900: #052561,
+  A100: #92b0ff,
+  A200: #5f8bff,
+  A400: #2c66ff,
+  A700: #1353ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff
+  )
+);
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$nghotel-primary: mat-palette($nghotel-primary, 100, 400, 900);
+$nghotel-accent: mat-palette($nghotel-accent, 50, 400, 900);
+// The warn palette is optional (defaults to red).
+$nghotel-warn: mat-palette($mat-red);
+// Create the theme object (a Sass map containing all of the palettes).
+$nghotel: mat-light-theme($nghotel-primary, $nghotel-accent, $nghotel-warn);
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@import './app/navigation/navtabs/navtabs.component-theme.scss';
+@include angular-material-theme($nghotel);
+// navtabs scss
+@include navtabs-component-theme($nghotel);
+// custom styles here
+.navtabs-container {
+  background-color: mat-color($nghotel-primary, 100);
+}
+.mat-list-option:hover,
+.mat-list-option.mat-list-item-focus,
+.mat-nav-list .mat-list-item:hover,
+.mat-nav-list .mat-list-item.mat-list-item-focus {
+  background-color: mat-color($nghotel-accent, 100);
+}
+.mat-tab-label,
+.mat-tab-link {
+  color: mat-color($nghotel-accent, 900);
+}
